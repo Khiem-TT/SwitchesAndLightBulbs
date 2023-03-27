@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Switches And Light Bulbs</title>
+</head>
+<body>
+<script>
+    class ElectricLamp {
+        status;
+
+        constructor(status) {
+            this.status = status;
+        }
+
+        turnOff() {
+            return this.status = false;
+        }
+
+        turnOn() {
+            return this.status = true;
+        }
+
+        getStatus() {
+            return this.status;
+        }
+    }
+
+    class SwitchButton {
+        status;
+
+        constructor(status) {
+            this.status = status;
+        }
+
+        connectToLamp(lamp) {
+            this.lamp = lamp;
+        }
+
+        switchOff() {
+            return this.lamp.turnOff();
+        }
+
+        switchOn() {
+            return this.lamp.turnOn();
+        }
+    }
+
+    let switchbtn = new SwitchButton(false);
+    let lamp = new ElectricLamp(false);
+    switchbtn.connectToLamp(lamp);
+    for (let i = 0; i < 9; i++) {
+        switchbtn.switchOn();
+        switchbtn.switchOff();
+    }
+    switchbtn.switchOn();
+    console.log(lamp.getStatus());
+</script>
+</body>
+</html>
